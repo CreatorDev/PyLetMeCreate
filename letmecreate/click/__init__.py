@@ -1,1 +1,1 @@
-__all__ = ['thermo3']
+__all__ = ['thermo3', 'proximity']
