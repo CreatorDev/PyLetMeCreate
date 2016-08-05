@@ -1,1 +1,2 @@
-__all__ = ['led', 'switch', 'gpio', 'gpio_monitor', 'common', 'adc', 'pwm']
+__all__ = ['led', 'switch', 'gpio', 'gpio_monitor', 'common', 'adc', 'pwm',
+           'uart']
