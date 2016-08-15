@@ -3,9 +3,9 @@
 
 import ctypes
 
-_lib = ctypes.CDLL('libletmecreate_click.so')
-callback_type = ctypes.CFUNCTYPE(None, ctypes.c_uint8)
-callbacks = [None, None]
+_LIB = ctypes.CDLL('libletmecreate_click.so')
+_CALLBACK_TYPE = ctypes.CFUNCTYPE(None, ctypes.c_uint8)
+_CALLBACKS = [None, None]
 
 
 def enable(mikrobus_index):
@@ -17,7 +17,7 @@ def enable(mikrobus_index):
 
     Note: An exception is thrown if it fails to enable the Motion Click.
     """
-    ret = _lib.motion_click_enable(mikrobus_index)
+    ret = _LIB.motion_click_enable(mikrobus_index)
     if ret < 0:
         raise Exception("motion click enable failed")
 
@@ -37,11 +37,11 @@ def attach_callback(mikrobus_index, callback):
 
     Note: An exception is thrown if it fails to attach a callback.
     """
-    ptr = callback_type(callback)
-    ret = _lib.motion_click_attach_callback(mikrobus_index, ptr)
+    ptr = _CALLBACK_TYPE(callback)
+    ret = _LIB.motion_click_attach_callback(mikrobus_index, ptr)
     if ret < 0:
         raise Exception("motion click attach callback failed")
-    callbacks[mikrobus_index] = ptr;
+    _CALLBACKS[mikrobus_index] = ptr
 
 
 def disable(mikrobus_index):
@@ -49,6 +49,6 @@ def disable(mikrobus_index):
 
     Note: An exception is thrown if it fails to disable the Motion Click.
     """
-    ret = _lib.motion_click_disable(mikrobus_index)
+    ret = _LIB.motion_click_disable(mikrobus_index)
     if ret < 0:
         raise Exception("motion click disable failed")
