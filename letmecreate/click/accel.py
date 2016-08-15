@@ -8,7 +8,7 @@ these functions.
 
 import ctypes
 
-_lib = ctypes.CDLL('libletmecreate_click.so')
+_LIB = ctypes.CDLL('libletmecreate_click.so')
 
 
 def enable():
@@ -16,7 +16,7 @@ def enable():
 
     Note: An exception is thrown if it fails to enable the sensor chip.
     """
-    ret = _lib.accel_click_enable()
+    ret = _LIB.accel_click_enable()
     if ret < 0:
         raise Exception("accel click enable failed")
 
@@ -29,7 +29,7 @@ def get_measure():
     accel_x = ctypes.c_float(0)
     accel_y = ctypes.c_float(0)
     accel_z = ctypes.c_float(0)
-    ret = _lib.accel_click_get_measure(ctypes.byref(accel_x),
+    ret = _LIB.accel_click_get_measure(ctypes.byref(accel_x),
                                        ctypes.byref(accel_y),
                                        ctypes.byref(accel_z))
     if ret < 0:
@@ -42,6 +42,6 @@ def disable():
 
     Note: An exception is thrown if it fails to disable the sensor chip.
     """
-    ret = _lib.accel_click_disable()
+    ret = _LIB.accel_click_disable()
     if ret < 0:
         raise Exception("accel click disable failed")
