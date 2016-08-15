@@ -2,9 +2,9 @@
 
 import ctypes
 
-_lib = ctypes.CDLL('libletmecreate_core.so')
-callback_type = ctypes.CFUNCTYPE(None)
-callbacks = {}
+_LIB = ctypes.CDLL('libletmecreate_core.so')
+_CALLBACK_TYPE = ctypes.CFUNCTYPE(None)
+_CALLBACKS = {}
 
 SWITCH_1_PRESSED = 0x01
 SWITCH_1_RELEASED = 0x02
@@ -14,29 +14,29 @@ SWITCH_ALL_EVENTS = 0x0F
 
 
 def init():
-    global callbacks
-    ret = _lib.switch_init()
+    global _CALLBACKS
+    ret = _LIB.switch_init()
     if ret < 0:
         raise Exception("switch init failed")
-    callbacks = {}
+    _CALLBACKS = {}
 
 
 def add_callback(event_mask, callback):
-    ptr = callback_type(callback)
-    ret = _lib.switch_add_callback(event_mask, ptr)
+    ptr = _CALLBACK_TYPE(callback)
+    ret = _LIB.switch_add_callback(event_mask, ptr)
     if ret < 0:
         raise Exception("switch add callback failed")
-    callbacks[ret] = ptr
+    _CALLBACKS[ret] = ptr
 
 
 def remove_callback(callback_id):
-    ret = _lib.switch_remove_callback(callback_id)
+    ret = _LIB.switch_remove_callback(callback_id)
     if ret < 0:
         raise Exception("switch remove callback failed")
-    del callbacks[callback_id]
+    del _CALLBACKS[callback_id]
 
 
 def release():
-    ret = _lib.switch_release()
+    ret = _LIB.switch_release()
     if ret < 0:
         raise Exception("switch release failed")
