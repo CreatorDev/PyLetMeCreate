@@ -2,11 +2,11 @@
 
 import ctypes
 
-_lib = ctypes.CDLL('libletmecreate_click.so')
+_LIB = ctypes.CDLL('libletmecreate_click.so')
 
 
 def enable():
-    ret = _lib.color_click_enable()
+    ret = _LIB.color_click_enable()
     if ret < 0:
         raise Exception("color click enable failed")
 
@@ -16,7 +16,7 @@ def get_color():
     red = ctypes.c_uint16(0)
     green = ctypes.c_uint16(0)
     blue = ctypes.c_uint16(0)
-    ret = _lib.color_click_get_color(ctypes.byref(clear),
+    ret = _LIB.color_click_get_color(ctypes.byref(clear),
                                      ctypes.byref(red),
                                      ctypes.byref(green),
                                      ctypes.byref(blue))
@@ -27,6 +27,6 @@ def get_color():
 
 
 def disable():
-    ret = _lib.color_click_disable()
+    ret = _LIB.color_click_disable()
     if ret < 0:
         raise Exception("color click disable failed")
