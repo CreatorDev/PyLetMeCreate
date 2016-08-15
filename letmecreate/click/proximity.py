@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import ctypes
 
 _lib = ctypes.CDLL('libletmecreate_click.so')
