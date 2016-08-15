@@ -2,7 +2,7 @@
 
 import ctypes
 
-_lib = ctypes.CDLL('libletmecreate_core.so')
+_LIB = ctypes.CDLL('libletmecreate_core.so')
 
 # Baudrates
 UART_BD_1200 = 1200
@@ -15,28 +15,28 @@ UART_BD_57600 = 57600
 
 
 def init():
-    ret = _lib.uart_init()
+    ret = _LIB.uart_init()
     if ret < 0:
         raise Exception("uart init failed")
 
 
 def select_bus(mikrobus_index):
-    _lib.uart_select_bus(mikrobus_index)
+    _LIB.uart_select_bus(mikrobus_index)
 
 
 def get_current_bus():
-    return  _lib.uart_get_current_bus()
+    return  _LIB.uart_get_current_bus()
 
 
 def set_baudrate(baudrate):
-    ret = _lib.uart_set_baudrate(baudrate)
+    ret = _LIB.uart_set_baudrate(baudrate)
     if ret < 0:
         raise Exception("uart set baudrate failed")
 
 
 def get_baudrate():
     baudrate = ctypes.c_uint32(0)
-    ret = _lib.uart_get_baudrate(ctypes.byref(baudrate))
+    ret = _LIB.uart_get_baudrate(ctypes.byref(baudrate))
     if ret < 0:
         raise Exception("uart get baudrate failed")
     return baudrate.value
@@ -44,20 +44,20 @@ def get_baudrate():
 
 def send(data):
     arr = (ctypes.c_uint8 * len(data))(*data)
-    ret = _lib.uart_send(arr, len(data))
+    ret = _LIB.uart_send(arr, len(data))
     if ret < 0:
         raise Exception("uart send failed")
 
 
 def receive(length):
     arr = (ctypes.c_uint8 * length)()
-    ret = _lib.uart_receive(arr, length)
+    ret = _LIB.uart_receive(arr, length)
     if ret < 0:
         raise Exception("uart receive failed")
     return [arr[i] for i in range(length)]
 
 
 def release():
-    ret = _lib.uart_release()
+    ret = _LIB.uart_release()
     if ret < 0:
         raise Exception("uart release failed")
