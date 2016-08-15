@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Python binding of SWITCH wrapper of LetMeCreate library."""
 
 import ctypes
 
@@ -14,6 +15,10 @@ SWITCH_ALL_EVENTS = 0x0F
 
 
 def init():
+    """Initialise the switch.
+
+    Note: An exception is thrown if an error occurs during initialisation.
+    """
     global _CALLBACKS
     ret = _LIB.switch_init()
     if ret < 0:
@@ -22,6 +27,14 @@ def init():
 
 
 def add_callback(event_mask, callback):
+    """Add a callback. Returns a callback ID.
+
+    event_mask: must be in range 1..15.
+
+    callback: Function to call if event happens.
+
+    Note: An exception is thrown if it fails to add the callback.
+    """
     ptr = _CALLBACK_TYPE(callback)
     ret = _LIB.switch_add_callback(event_mask, ptr)
     if ret < 0:
@@ -30,6 +43,13 @@ def add_callback(event_mask, callback):
 
 
 def remove_callback(callback_id):
+    """Removes callback
+
+    callback_id: must be a positive integer returned by a previous call to
+    add_callback.
+
+    Note: An exception is thrown if it fails to remove the callback.
+    """
     ret = _LIB.switch_remove_callback(callback_id)
     if ret < 0:
         raise Exception("switch remove callback failed")
@@ -37,6 +57,12 @@ def remove_callback(callback_id):
 
 
 def release():
+    """Release the switch wrapper.
+
+    All callbacks are destroyed.
+
+    Note: An exception is thrown if it fails.
+    """
     ret = _LIB.switch_release()
     if ret < 0:
         raise Exception("switch release failed")
