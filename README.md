@@ -18,6 +18,9 @@ $ git clone https://github.com/CreatorDev/openwrt.git
 $ mkdir -p custom/pyletmecreate
 $ cd custom/pyletmecreate
 ```
+#### Stable release
+
+If you are only interested in getting the latest release of LetMeCreate library, then download a copy of Makefile.stable located in miscellaneous folder. Copy this file inside the pyletmecreate folder you have just created and rename it to Makefile.
 
 #### Development configuration
 
