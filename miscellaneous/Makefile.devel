@@ -19,7 +19,7 @@ define Package/python3-letmecreate
   DEPENDS:= +python3-light +letmecreate
 endef
 
-define Package/python-pyserial/description
+define Package/python3-letmecreate/description
 	Python binding of LetMeCreate library.
 endef
 
