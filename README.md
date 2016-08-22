@@ -1,6 +1,6 @@
 # PyLetMeCreate
 
-This is the python binding of LetMeCreate library. It requires Python 3. See [LetMecreate](https://github.com/francois-berder/LetMeCreate) for the complete list of interface and click board supported.
+This is the python binding of the LetMeCreate library. It requires Python 3. See [LetMeCreate](https://github.com/francois-berder/LetMeCreate) for the complete list of interface and click board supported.
 
 ## Integration in Openwrt
 
@@ -47,10 +47,6 @@ Update and install all feeds:
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
 ```
-In make menuconfig,
-
-python3-letmecreate
-
 Select python3-letmecreate in make menuconfig. It will automatically select python3 and letmecreate. Then, compile Openwrt:
 
 ```sh
