@@ -40,6 +40,7 @@ def add_callback(event_mask, callback):
     if ret < 0:
         raise Exception("switch add callback failed")
     _CALLBACKS[ret] = ptr
+    return ret
 
 
 def remove_callback(callback_id):
