@@ -35,6 +35,9 @@ define Build/Install
 endef
 
 define Package/python3-letmecreate/install
+	$(INSTALL_DIR) $(1)/usr/bin/pyletmecreate_examples/
+	$(CP) $(PKG_BUILD_DIR)/examples/*.py $(1)/usr/bin/pyletmecreate_examples/
+
 	$(INSTALL_DIR) $(1)/usr/lib/python3.5/site-packages/
 	$(CP) $(PKG_BUILD_DIR)/letmecreate $(1)/usr/lib/python3.5/site-packages/
 endef
