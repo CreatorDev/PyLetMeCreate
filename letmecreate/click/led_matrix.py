@@ -42,7 +42,8 @@ def set_column(column_index, data):
     data: A 8-bit integer. data is interpreted as a bit string. LED's, whose
     corresponding bits are 1, are switched on, otherwise they are switched off.
 
-    Note: An exception is thrown if it fails to switch on/off LED's of a column.
+    Note: An exception is thrown if it fails to switch on/off LED's of a
+    column.
     """
     ret = _LIB.led_matrix_click_set_column(column_index, data)
     if ret < 0:
