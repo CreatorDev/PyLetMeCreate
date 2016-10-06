@@ -44,4 +44,3 @@ def disable_relay_2(mikrobus_index):
     ret = _LIB.relay2_click_disable_relay_2(mikrobus_index)
     if ret < 0:
         raise Exception("relay2 click disable relay 2 failed")
-
