@@ -10,7 +10,8 @@ It defines binding for the following click boards:
   - Joystick
   - Color
   - 7Seg
+  - IR distance
 """
 
 __all__ = ['thermo3', 'proximity', 'accel', 'relay2', 'motion', 'led_matrix',
-           'joystick', 'color', 'seven_seg']
+           'joystick', 'color', 'seven_seg', 'ir_distance']
