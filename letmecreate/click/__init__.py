@@ -9,7 +9,8 @@ It defines binding for the following click boards:
   - 8x8R (LED matrix)
   - Joystick
   - Color
+  - 7Seg
 """
 
 __all__ = ['thermo3', 'proximity', 'accel', 'relay2', 'motion', 'led_matrix',
-           'joystick', 'color']
+           'joystick', 'color', 'seven_seg']
