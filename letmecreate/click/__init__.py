@@ -11,7 +11,14 @@ It defines binding for the following click boards:
   - Color
   - 7Seg
   - IR distance
+  - Bargraph
+  - Relay (partial support: only relay 1 working)
+  - IR eclipse
+  - Color2
+  - ADC
+  - Alcohol
 """
 
 __all__ = ['thermo3', 'proximity', 'accel', 'relay2', 'motion', 'led_matrix',
-           'joystick', 'color', 'seven_seg', 'ir_distance']
+           'joystick', 'color', 'seven_seg', 'ir_distance', 'bargraph',
+           'relay', 'ir_eclipse', 'color2', 'adc', 'alcohol']
