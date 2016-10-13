@@ -7,6 +7,7 @@ It defines binding for the following click boards:
   - ADC
   - Alcohol
   - Bargraph
+  - CO
   - Color
   - Color2
   - Eve
@@ -23,4 +24,5 @@ It defines binding for the following click boards:
 
 __all__ = ['seven_seg', 'led_matrix', 'accel', 'adc', 'alcohol', 'bargraph',
            'color', 'color2', 'eve', 'ir_distance', 'ir_eclipse', 'joystick',
-           'motion', 'proximity', 'relay', 'relay2', 'relay4', 'thermo3']
+           'motion', 'proximity', 'relay', 'relay2', 'relay4', 'thermo3',
+           'CO']
