@@ -13,7 +13,7 @@ def get_measure(mikrobus_index):
 
     Note: An exception is thrown if it fails to communicate with the CO click.
     """
-    value = ctypes.c_uint16_t(0)
+    value = ctypes.c_uint16(0)
     ret = _LIB.co_click_get_measure(mikrobus_index, ctypes.byref(value))
     if ret < 0:
         raise Exception("co click read ppm failed")
