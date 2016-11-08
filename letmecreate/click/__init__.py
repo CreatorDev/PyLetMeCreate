@@ -5,6 +5,7 @@ It defines binding for the following click boards:
   - 8x8R (LED matrix)
   - Accel
   - ADC
+  - Air quality
   - Alcohol
   - Bargraph
   - CO
@@ -22,7 +23,7 @@ It defines binding for the following click boards:
   - Thermo3
 """
 
-__all__ = ['seven_seg', 'led_matrix', 'accel', 'adc', 'alcohol', 'bargraph',
-           'color', 'color2', 'eve', 'ir_distance', 'ir_eclipse', 'joystick',
-           'motion', 'proximity', 'relay', 'relay2', 'relay4', 'thermo3',
-           'CO']
+__all__ = ['seven_seg', 'led_matrix', 'accel', 'adc', 'air_quality', 'alcohol',
+           'bargraph', 'color', 'color2', 'eve', 'ir_distance', 'ir_eclipse',
+           'joystick', 'motion', 'proximity', 'relay', 'relay2', 'relay4',
+           'thermo3', 'CO']
