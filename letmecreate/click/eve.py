@@ -18,7 +18,9 @@ import ctypes
 
 _LIB = ctypes.CDLL('libletmecreate_click.so')
 _CALLBACK_TYPE = ctypes.CFUNCTYPE(None, ctypes.c_uint16, ctypes.c_uint16)
+_CALLBACK_EVENT_TYPE = ctypes.CFUNCTYPE(None)
 _CALLBACK = None
+_EVENT_CALLBACK = None
 
 # Display list opcodes
 FT800_ALPHA_FUNC = (0x09 << 24)
@@ -561,7 +563,8 @@ def set_backlight_intensity(intensity):
 
 
 def attach_touch_callback(callback):
-    """Set the function to call whenever a touch event is detected.
+    """Set the function to call whenever a touch screen conversion is complete
+    (about 60 times a second).
 
     This callback must be able to take two 16-bit unsigned integers (the
     coordinates of the event in screen coordinates).
@@ -572,6 +575,17 @@ def attach_touch_callback(callback):
     _CALLBACK = callback
 
 
+def attach_touch_event_callback(callback):
+    """Set the function to call when a touch event is detected.
+
+    This callback does not take any arguments.
+    """
+    global _EVENT_CALLBACK
+    ptr = _CALLBACK_EVENT_TYPE(callback)
+    _LIB.eve_click_attach_touch_event_callback(ptr)
+    _EVENT_CALLBACK = callback
+
+
 def calibrate():
     """Calibrate the touch screen.
 
@@ -580,3 +594,47 @@ def calibrate():
     ret = _LIB.eve_click_calibrate()
     if ret < 0:
         raise Exception("eve click calibrate failed")
+
+
+def get_calibration_matrix():
+    """Retrieve calibration matrix.
+
+    format:
+    | a b c |
+    | d e f |
+    Each value of the matrix is in 16.16 fixed-point format.
+    The return value is a tuple (a, b, c, d, e, f)
+
+    Note: An exception is thrown if it fails to get the calibration matrix.
+    """
+    a = ctypes.c_uint32(0)
+    b = ctypes.c_uint32(0)
+    c = ctypes.c_uint32(0)
+    d = ctypes.c_uint32(0)
+    e = ctypes.c_uint32(0)
+    f = ctypes.c_uint32(0)
+    ret = _LIB.eve_click_get_calibration_matrix(ctypes.byref(a),
+                                                ctypes.byref(b),
+                                                ctypes.byref(c),
+                                                ctypes.byref(d),
+                                                ctypes.byref(e),
+                                                ctypes.byref(f))
+    if ret < 0:
+        raise Exception("eve click get calibration matrix failed")
+    return (a.value, b.value, c.value, d.value, e.value, f.value)
+
+
+def set_calibration_matrix(a, b, c, d, e, f):
+    """Set the calibration matrix.
+
+    format:
+    | a b c |
+    | d e f |
+
+    Each number must be in fixed point 16.16 format.
+
+    Note: An exception is thrown if it fails to set the calibration matrix.
+    """
+    ret = _LIB.eve_click_set_calibration_matrix(a, b, c, d, e, f)
+    if ret < 0:
+        raise Exception("eve click set calibration matrix failed")
