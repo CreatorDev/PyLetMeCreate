@@ -47,7 +47,7 @@ def write(a, b):
 
     Note: An exception is thrown if it fails to write these two characters.
     """
-    ret = _LIB.alphanum_click_write(a, b)
+    ret = _LIB.alphanum_click_write(ord(a), ord(b))
     if ret < 0:
         raise Exception("alphanum click write failed")
 
