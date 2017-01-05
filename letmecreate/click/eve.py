@@ -572,7 +572,7 @@ def attach_touch_callback(callback):
     global _CALLBACK
     ptr = _CALLBACK_TYPE(callback)
     _LIB.eve_click_attach_touch_callback(ptr)
-    _CALLBACK = callback
+    _CALLBACK = ptr
 
 
 def attach_touch_event_callback(callback):
@@ -583,7 +583,7 @@ def attach_touch_event_callback(callback):
     global _EVENT_CALLBACK
     ptr = _CALLBACK_EVENT_TYPE(callback)
     _LIB.eve_click_attach_touch_event_callback(ptr)
-    _EVENT_CALLBACK = callback
+    _EVENT_CALLBACK = ptr
 
 
 def calibrate():
