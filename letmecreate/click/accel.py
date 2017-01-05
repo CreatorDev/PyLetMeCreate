@@ -12,13 +12,13 @@ import ctypes
 _LIB = ctypes.CDLL('libletmecreate_click.so')
 
 def use_spi():
-    """Configure the Accel Click wrapper to use I2C to communiate with
+    """Configure the Accel Click wrapper to use I2C to communicate with
        the board"""
     _LIB.accel_click_use_spi()
 
 
 def use_i2c():
-    """Configure the Accel Click wrapper to use I2C to communiate with
+    """Configure the Accel Click wrapper to use I2C to communicate with
        the board"""
     _LIB.accel_click_use_i2c()
 
