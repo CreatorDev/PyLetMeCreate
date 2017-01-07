@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""This example shows features related to the touch screen of the EVE Click
+wrapper of the LetMeCreate library.
+
+It first performs calibration of the touch screen, then it prints the
+coordinates of the touch event. Press Ctrl+C to exit program.
+
+Before running this program:
+  - the EVE Click must be inserted in Mikrobus 1
+  - a WQVGA screen must be connected to the EVE Click.
+"""
 
 from letmecreate.core import spi
 from letmecreate.core.common import MIKROBUS_1

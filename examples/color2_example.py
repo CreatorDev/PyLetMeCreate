@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""This example shows how to use the Color2 Click wrapper of the LetMeCreate
+library.
+
+The Color2 Click must be plugged in Mikrobus 1 of Ci40.
+"""
 
 from letmecreate.core import i2c
 from letmecreate.click import color2

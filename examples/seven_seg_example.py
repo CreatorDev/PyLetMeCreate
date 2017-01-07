@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""This example shows how to display a number using the 7Seg Click on
-Mikrobus 1.
+"""This example shows how to use the 7Seg Click wrapper of the LetMeCreate library.
+It displays number from 0 to 99 in 10 seconds.
+It assumes that the 7Seg Click is inserted in Mikrobus 1.
 """
 
 from letmecreate.core.common import MIKROBUS_1

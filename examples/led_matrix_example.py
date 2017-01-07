@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""This example shows how to display a number using the 8x8 Click on
-Mikrobus 1.
+"""This example shows how to use the 8x8R Click wrapper of the LetMeCreate.
+
+It gradually turns on all the LED's of the led matrix (8x8R Click) from the
+bottom-right corner to the top-left corner.
+
+The 8x8R Click must be inserted in Mikrobus 1 before running this program.
 """
 
 from letmecreate.core.common import MIKROBUS_1

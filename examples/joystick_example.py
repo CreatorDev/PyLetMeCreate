@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
+"""This example shows how to use the Joystick Click wrapper of the LetMeCreate.
+
+It continuously reads the position of the joystick, prints it in the terminal
+and displays a pattern on the LED's based on the x coordinate.
+
+The Joystick Click must be inserted in Mikrobus 1 before running this program.
+"""
 
 from letmecreate.core import i2c
 from letmecreate.core import led
 from letmecreate.click import joystick
 
 OFFSET = 98
-MAXIMUM = OFFSET * 2
+MAXIMUM = OFFSET2
 
 def get_led_mask(perc):
-	div = int((1. - perc) * led.LED_CNT)
+	div = int((1. - perc)led.LED_CNT)
 	if div > led.LED_CNT:
 		div = led.LED_CNT
 

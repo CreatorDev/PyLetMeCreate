@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""This example shows how to use the RTC click wrapper.
+"""This example shows how to use the RTC Click wrapper of the LetMeCreate to
+obtain the current date.
+
+It sets the date to Friday 28th October, 9:44:0. Then, it prints the current
+date read from the RTC Click every second. Ctrl+C must be pressed to exit
+the program.
+
+The RTC Click must be inserted in Mikrobus 1 before running this program.
 """
 
 from letmecreate.core import i2c

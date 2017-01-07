@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+"""This example shows some graphic capabilities of the EVE Click wrapper of the
+LetMeCreate library. You can find more documentation about these commands in
+the programmer guide available on FTDI website:
+http://www.ftdichip.com/Support/Documents/ProgramGuides/FT800%20Programmers%20Guide.pdf
+
+It displays some text, a button, a gauge, a clock, a dial and a toogle. After
+ 10 seconds, it exits.
+
+Before running this program:
+  - the EVE Click must be inserted in Mikrobus 1
+  - a WQVGA screen must be connected to the EVE Click.
+"""
 
 from letmecreate.core import spi
 from letmecreate.core.common import MIKROBUS_1

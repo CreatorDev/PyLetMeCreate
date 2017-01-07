@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""This example shows some basic features of the EVE Click wrapper of the
+LetMeCreate library.
+
+It displays a green screen for three seconds, then displays some text for
+another three seconds.
+
+Before running this program:
+  - the EVE Click must be inserted in Mikrobus 1
+  - a WQVGA screen must be connected to the EVE Click.
+"""
 
 from letmecreate.core import spi
 from letmecreate.core.common import MIKROBUS_1

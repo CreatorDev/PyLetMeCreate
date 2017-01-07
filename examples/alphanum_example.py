@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""This example shows how to use the Alphanum Click wrapper of the LetMeCreate
+to display characters.
+
+It displays "Ci" using both displays by enabling them one after the other at
+100Hz to give the illusion that both characters are displayed at the same
+time. The user has to interrupt the program to exit it by pressing Ctrl+C.
+ *
+The Alphanum Click must be inserted in Mikrobus 1 before running this
+program.
+""""
 
 from letmecreate.core.common import MIKROBUS_1
 from letmecreate.core import spi
