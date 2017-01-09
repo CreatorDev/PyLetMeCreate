@@ -8,7 +8,7 @@ any of these functions.
 
 import ctypes
 
-_LIB = ctypes.CDLL('libletmecreate_click.so')
+_LIB = ctypes.CDLL('libletmecreate_rpisensehat.so')
 
 # Joystick states
 JOYSTICK_LEFT = 0x10
@@ -34,7 +34,7 @@ def get_temperature():
     Note: An exception is thrown if it fails.
     """
     temperature = ctypes.c_float(0)
-    ret = _LIB.rpisensehat_get_pressure(ctypes.byref(temperature))
+    ret = _LIB.rpisensehat_get_temperature(ctypes.byref(temperature))
     if ret < 0:
         raise Exception("rpisensehat get temperature failed")
     return temperature.value
@@ -72,9 +72,9 @@ def get_accelerometer_measure():
     accel_x = ctypes.c_float(0)
     accel_y = ctypes.c_float(0)
     accel_z = ctypes.c_float(0)
-    ret = _LIB.rpisensehat_get_magnetometer_measure(ctypes.byref(accel_x),
-                                                    ctypes.byref(accel_y),
-                                                    ctypes.byref(accel_z))
+    ret = _LIB.rpisensehat_get_accelerometer_measure(ctypes.byref(accel_x),
+                                                     ctypes.byref(accel_y),
+                                                     ctypes.byref(accel_z))
     if ret < 0:
         raise Exception("rpisensehat get accelerometer measure failed")
     return (accel_x.value, accel_y.value, accel_z.value)
@@ -88,9 +88,9 @@ def get_gyroscope_measure():
     gyro_x = ctypes.c_float(0)
     gyro_y = ctypes.c_float(0)
     gyro_z = ctypes.c_float(0)
-    ret = _LIB.rpisensehat_get_magnetometer_measure(ctypes.byref(gyro_x),
-                                                    ctypes.byref(gyro_y),
-                                                    ctypes.byref(gyro_z))
+    ret = _LIB.rpisensehat_get_gyroscope_measure(ctypes.byref(gyro_x),
+                                                 ctypes.byref(gyro_y),
+                                                 ctypes.byref(gyro_z))
     if ret < 0:
         raise Exception("rpisensehat get gyroscope measure failed")
     return (gyro_x.value, gyro_y.value, gyro_z.value)
