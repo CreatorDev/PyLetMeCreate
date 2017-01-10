@@ -8,7 +8,7 @@ time. The user has to interrupt the program to exit it by pressing Ctrl+C.
  *
 The Alphanum Click must be inserted in Mikrobus 1 before running this
 program.
-""""
+"""
 
 from letmecreate.core.common import MIKROBUS_1
 from letmecreate.core import spi
