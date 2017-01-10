@@ -19,7 +19,7 @@ $ make package/pyletmecreate/{clean,compile} -j1 V=s
 
 ### Installation steps
 
-You can install LetMeCreate package on OpenWRT executing:
+You can install PyLetMeCreate package on OpenWRT executing:
 
 ```sh
 $ opkg install pyletmecreate
