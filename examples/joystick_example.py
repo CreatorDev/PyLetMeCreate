@@ -12,10 +12,10 @@ from letmecreate.core import led
 from letmecreate.click import joystick
 
 OFFSET = 98
-MAXIMUM = OFFSET2
+MAXIMUM = OFFSET * 2
 
 def get_led_mask(perc):
-    div = int((1. - perc)led.LED_CNT)
+    div = int((1. - perc) * led.LED_CNT)
     if div > led.LED_CNT:
         div = led.LED_CNT
 
