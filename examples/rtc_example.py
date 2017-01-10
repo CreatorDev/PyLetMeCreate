@@ -76,11 +76,11 @@ rtc.set_date(date)
 
 while True:
     date = rtc.get_date()
-    print("{} {} {} {}, {}:{}:{}\n".format(weekday_str[date.weekday],
-                                           date.day,
-                                           month_str[date.month],
-                                           date.year,
-                                           date.hour, date.minute, date.second))
+    print("{} {} {} {}, {}:{}:{}".format(weekday_str[date.weekday],
+                                         date.day,
+                                         month_str[date.month],
+                                         date.year,
+                                         date.hour, date.minute, date.second))
     sleep(1)
 
 i2c_release()
