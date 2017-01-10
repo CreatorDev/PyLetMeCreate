@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-"""This example shows how to read the temperature using a Thermo3 Click
-on Mikrobus 1.
+"""This example shows how to use the Thermo3 Click wrapper of the LetMeCreate
+library.
+
+It reads the temperature from the sensor and exits.
+
+The Thermo3 Click must be inserted in Mikrobus 1 before running this program.
+
+
 """
 
 from letmecreate.core import i2c

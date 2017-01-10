@@ -1,14 +1,26 @@
 #!/usr/bin/env python3
 """Python binding of Accel Click wrapper of LetMeCreate library.
 
-This wrapper only supports SPI protocol to communicate with the click board.
-You must initialise the SPI bus and select the right bus before using any of
-these functions.
+This wrapper supports both SPI and I2C protocol to communicate with the click
+board. By default, the wrapper uses SPI.
+You must initialise the SPI (or I2C) bus and select the right bus before using
+any of these functions.
 """
 
 import ctypes
 
 _LIB = ctypes.CDLL('libletmecreate_click.so')
+
+def use_spi():
+    """Configure the Accel Click wrapper to use I2C to communicate with
+       the board"""
+    _LIB.accel_click_use_spi()
+
+
+def use_i2c():
+    """Configure the Accel Click wrapper to use I2C to communicate with
+       the board"""
+    _LIB.accel_click_use_i2c()
 
 
 def enable():
