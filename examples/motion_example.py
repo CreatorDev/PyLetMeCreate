@@ -11,6 +11,7 @@ The Motion Click must be inserted in Mikrobus 1 before running this program.
 from letmecreate.core.common import MIKROBUS_1
 from letmecreate.core import led
 from letmecreate.click import motion
+from time import sleep
 
 
 def flash_leds(arg):
