@@ -50,7 +50,7 @@ def get_relay_1_state(mikrobus_index):
     Note: An exception is thrown if it fails to set state of relay 1.
     """
     state = ctypes.c_uint8(0)
-    ret = _LIB.relay_click_set_relay_1_state(mikrobus_index,
+    ret = _LIB.relay_click_get_relay_1_state(mikrobus_index,
                                              ctypes.byref(state))
     if ret < 0:
         raise Exception("relay click get relay 1 state")
