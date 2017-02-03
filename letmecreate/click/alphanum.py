@@ -66,25 +66,8 @@ def raw_write(a, b):
         raise Exception("alphanum click raw write failed")
 
 
-def select_left_display():
-    """Select left display.
-
-    This function will enable the left display and disable the right display.
-
-    Note: An exception is thrown if it fails to select the left display.
-    """
-    ret = _LIB.alphanum_click_select_left_display()
+def release():
+    """Stop refreshing display"""
+    ret = _LIB.alphanum_click_release()
     if ret < 0:
-        raise Exception("alphanum click select left display failed")
-
-
-def select_right_display():
-    """Select right display.
-
-    This function will enable the right display and disable the left display.
-
-    Note: An exception is thrown if it fails to select the right display.
-    """
-    ret = _LIB.alphanum_click_select_right_display()
-    if ret < 0:
-        raise Exception("alphanum click select right display failed")
+        raise Exception("alphanum click release failed")
