@@ -5,6 +5,13 @@ import ctypes
 
 _LIB = ctypes.CDLL('libletmecreate_core.so')
 
+# Pin type
+TYPE_AN = 0
+TYPE_RST = 1
+TYPE_PWM = 2
+TYPE_INT = 3
+TYPE_COUNT = 4
+
 # GPIO pin number
 MIKROBUS_1_AN = 22
 MIKROBUS_1_RST = 23
@@ -50,6 +57,18 @@ def init(gpio_pin):
     ret = _LIB.gpio_init(gpio_pin)
     if ret < 0:
         raise Exception("gpio init failed")
+
+
+def get_pin(mikrobus_index, pin_type):
+    """Returns GPIO index of a pin on provided mikrobus
+
+    Note: An exception is thrown if the gpio cannot be found.
+    """
+    pin = ctypes.c_uint8(0)
+    ret = _LIB.gpio_get_pin(mikrobus_index, pin_type, ctypes.byref(pin))
+    if ret < 0:
+        raise Exception("gpio get pin failed")
+    return pin.value
 
 
 def set_direction(gpio_pin, direction):
