@@ -9,7 +9,8 @@ _LIB = ctypes.CDLL('libletmecreate_core.so')
 def init():
     """Initialise I2C bus on both mikrobus.
 
-    The current I2C bus is set to MIKROBUS_1.
+    The current I2C bus is set to MIKROBUS_1. The timeout is disabled for
+    both busses.
 
     Note: If an error occurs during the initialisation, an exception is thrown.
     """
@@ -96,6 +97,18 @@ def read_byte(slave_address):
     if ret < 0:
         raise Exception("i2c write byte failed")
     return data.value
+
+
+def get_timeout():
+    """Returns the timeout in milliseconds of the current bus."""
+    return _LIB.i2c_get_timeout()
+
+
+def set_timeout(timeout):
+    """Set the timeout in milliseconds of the current bus.
+    Set timeout to 0 disables it.
+    """
+    _LIB.i2c_set_timeout(timeout)
 
 
 def release():
