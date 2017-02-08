@@ -32,7 +32,7 @@ It defines binding for the following click boards:
 """
 
 __all__ = ['seven_seg', 'led_matrix', 'accel', 'adc', 'air_quality', 'alcohol',
-           'bargraph', 'CO', 'color', 'color2', 'eve', 'fan', 'gyro',
+           'bargraph', 'co', 'color', 'color2', 'eve', 'fan', 'gyro',
            'ir_distance', 'ir_eclipse', 'joystick', 'light', 'lin_hall', 'lora',
            'motion', 'oled', 'proximity', 'relay', 'relay2', 'relay4', 'rtc',
            'thermo3', 'uni_hall']
