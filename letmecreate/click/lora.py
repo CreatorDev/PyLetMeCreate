@@ -37,6 +37,7 @@ LORA_CLICK_BANDWIDTH_250KHZ = 1
 LORA_CLICK_BANDWIDTH_500KHZ = 2
 
 class LoraClickConfig(ctypes.Structure):
+    """Lora Click configuration"""
     _fields_ = [
         ("frequency", ctypes.c_uint32),
         ("spreading_factor", ctypes.c_uint8),
@@ -54,23 +55,56 @@ _LIB = ctypes.CDLL('libletmecreate_click.so')
 _LIB.lora_click_get_default_configuration.restype = LoraClickConfig
 
 def get_default_configuration():
-    """Returns default configuration."""
+    """Returns default configuration:
+
+        frequency = 868000000
+        spreading_factor = 12
+        auto_freq_band = LORA_CLICK_AUTO_FREQ_BAND_125KHZ
+        coding_rate = LORA_CLICK_CODING_RATE_4_8
+        bandwidth = LORA_CLICK_BANDWIDTH_250KHZ
+        power = 14
+        bitrate = 5000
+        freq_deviation = 5000
+        preamble_length = 8
+        enable_crc_header = true
+    """
     return _LIB.lora_click_get_default_configuration()
 
 
 def init(mikrobus_index, config):
+    """Initialize the Lora Click and configure it.
+
+    mikrobus_index: 0 (MIKROBUS_1) or 1 (MIKROBUS_2)
+    config: Configuration of the Lora Click
+
+    Note: An exception is thrown if it fails to initialize the Lora Click.
+    """
     ret = _LIB.lora_click_init(mikrobus_index, config)
     if ret < 0:
         raise Exception("")
 
 
 def configure(config):
+    """Configure the Lora Click
+
+    config: Configuration of the Lora Click
+
+    Note: An exception is thrown if it fails to configure the Lora Click.
+    """
     ret = _LIB.lora_click_configure(config)
     if ret < 0:
         raise Exception("")
 
 
 def send(data):
+    """Send a list of bytes
+
+    data: list of bytes
+
+    This is a blocking call.
+
+    Note: An exception is thrown if it fails to send all bytes.
+    """
     length = len(data)
     tx_buffer = (ctypes.c_uint8 * length)(*data)
     ret = _LIB.lora_click_send(tx_buffer, length)
@@ -79,6 +113,15 @@ def send(data):
 
 
 def receive(length):
+    """Receive a list of bytes
+
+    length: Number of bytes to receive
+
+    This is a blocking call, it will not return until the number of requested
+    bytes has been received.
+
+    Note: An exception is thrown if it fails to receive all bytes.
+    """
     rx_buffer = (ctypes.c_uint8 * length)()
     ret = _LIB.lora_click_receive(rx_buffer, length)
     if ret < 0:
@@ -87,6 +130,13 @@ def receive(length):
 
 
 def write_eeprom(start_address, data):
+    """Write some bytes in EEPROM
+
+    start_address: Must be in range 0x300-0x3FF
+    data: A list of bytes to write
+
+    Note: An exception is thrown if it fails to write bytes to the EEPROM.
+    """
     length = len(data)
     tmp = (ctypes.c_uint8 * length)(*data)
     ret = _LIB.lora_click_write_eeprom(start_address, tmp, length)
@@ -95,6 +145,13 @@ def write_eeprom(start_address, data):
 
 
 def read_eeprom(start_address, length):
+    """Read a list of bytes from EEPROM
+
+    start_address: Must be in range 0x300-0x3FF
+    length: Number of bytes to read
+
+    Note: An exception is thrown if it fails to read bytes from the EEPROM.
+    """
     data = (ctypes.c_uint8 * length)()
     ret = _LIB.lora_click_read_eeprom(start_address, data, length)
     if ret < 0:
@@ -103,6 +160,13 @@ def read_eeprom(start_address, length):
 
 
 def get_eui():
+    """Read the EUI from the Lora Click
+
+    This function returns a list of 8 bytes representing the EUI of the
+    device.
+
+    Note: An exception is thrown if it fails to read the EUI.
+    """
     eui = (ctypes.c_uint8 * 8)()
     ret = _LIB.lora_click_get_eui(eui)
     if ret < 0:
