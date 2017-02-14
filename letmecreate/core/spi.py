@@ -98,6 +98,18 @@ def transfer(tx_data):
     return [rx_buffer[i] for i in range(length)]
 
 
+def get_maximum_tranfer_length():
+    """Returns maximum length of a transfer in bytes.
+
+    Note: An exception is thrown if it fails to find the limit.
+    """
+    transfer_length_limit = ctypes.c_uint32(0)
+    ret = _LIB.spi_get_maximum_tranfer_length(ctypes.byref(transfer_length_limit))
+    if ret < 0:
+        raise Exception("spi get maximum tranfer length failed")
+    return transfer_length_limit.value
+
+
 def release():
     """Release all SPI bus.
 
