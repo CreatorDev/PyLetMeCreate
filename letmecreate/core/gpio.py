@@ -71,6 +71,21 @@ def get_pin(mikrobus_index, pin_type):
     return pin.value
 
 
+def get_type(gpio_pin):
+    """Returns the type of the GPIO
+
+    Some GPIO's on the Mikrobus has some type (AN, PWM, INT, RST or CS). Other
+    GPIO's don't have a type.
+
+    Note: An exception is thrown if the type of the gpio cannot be found.
+    """
+    pin_type = ctypes.c_uint8(0)
+    ret = _LIB.gpio_get_type(gpio_pin, ctypes.byref(pin_type))
+    if ret < 0:
+        raise Exception("gpio get type failed")
+    return pin_type.value
+
+
 def set_direction(gpio_pin, direction):
     """Configure GPIO as an input or an output.
 
