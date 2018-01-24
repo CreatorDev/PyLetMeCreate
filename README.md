@@ -57,3 +57,10 @@ thermo3.disable()
 # Release I2C
 i2c.release()
 ```
+
+## This repository is no longer maintained.
+
+Issue reports and pull requests will not be attended.
+
+---
+
